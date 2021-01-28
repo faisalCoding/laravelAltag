@@ -20,6 +20,42 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/info', function () {
     return response()->json([
-        "name"=>'حسام'
+       
+            "الاحد 12/3" => [
+              "1" => [
+                "name" => "خالد",
+                "hfrom" => "القارعة",
+                "hto" => "الليل",
+                "mto" => "الناس",
+                "mfrom" => "المسد",
+                "starsCount" => "3",
+                "list" => "true,true,true",
+                "hasFire" => "true",
+              ],
+              "2" => [
+                "name" => "حسام",
+                "hfrom" => "القارعة",
+                "hto" => "الليل",
+                "mto" => "الناس",
+                "mfrom" => "المسد",
+                "starsCount" => "2",
+                "list" => "true,false,true",
+                "hasFire" => "true",
+              ],
+            ],
+            "الاثنين 12/4" => [
+              "1" => [
+                "name" => "خالد",
+                "hfrom" => "القارعة",
+                "hto" => "الليل",
+                "mto" => "الناس",
+                "mfrom" => "المسد",
+                "starsCount" => "3",
+                "list" => "false,false,false",
+                "hasFire" => "false",
+              ],
+            ],
+            "الاثلاثاء 12/5" => []
+          
     ]);
 });
