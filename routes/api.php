@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/info', function () {
-    return response().json([
+    return response()->json([
         name=>'حسام'
     ]);
 });
