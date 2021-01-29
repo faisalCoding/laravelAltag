@@ -102,6 +102,10 @@ Route::get('/checkUpdate', function () {
 ]);
   $strUtf32 = mb_convert_encoding($str, "UTF-8");
 
-  return md5($strUtf32) . $strUtf32;
+  return  response()->json([ 
+    "md5" => md5($strUtf32) ,
+    "strutf8" => $strUtf32,
+    "str" => $str
+    ]);
 });
 
