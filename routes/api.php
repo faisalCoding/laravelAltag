@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/info', function () {
-  $resulte =  response()->json([
+  $resulte = [
        
     "الاحد 12/3" => [
       1 => [
@@ -57,10 +57,10 @@ Route::get('/info', function () {
     ],
     "الاثلاثاء 12/5" => []
   
-]);
+];
 
 return response()->json([
 "md5" => md5(serialize($resulte->original)),
-"data" => $resulte->original]);
+"data" => $resulte]);
 });
 
