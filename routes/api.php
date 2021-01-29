@@ -99,7 +99,7 @@ Route::get('/checkUpdate', function () {
     ],
     "الاثلاثاء 12/5" => []
   
-])->original;
+])->original->str;
   $strUtf32 = mb_convert_encoding($str, "UTF-8");
 
   return  response([ 
