@@ -61,6 +61,6 @@ Route::get('/info', function () {
 
 return response()->json([
 "md5" => md5(serialize($resulte->original)),
-"data" => $resulte]);
+"data" => $resulte->original]);
 });
 
