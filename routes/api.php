@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/info', function () {
+Route::get('/info/{md5}', function ($md5) {
+
+
   $resulte = [
        
     "الاحد 12/3" => [
@@ -59,8 +61,17 @@ Route::get('/info', function () {
   
 ];
 
+if($md5 ==  md5(serialize($resulte))){
+  return response()->json([
+    "update" => "no update avalble"
+  ]);
+}
+
 return response()->json([
 "md5" => md5(serialize($resulte)),
 "data" => $resulte]);
 });
+
+
+
 
