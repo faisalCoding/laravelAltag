@@ -56,6 +56,16 @@ Route::get('/info/{md5}', function ($md5) {
         "list" => [false,false,false],
         "hasFire" => false,
       ],
+      7 => [
+        "name" => "حسنون",
+        "hfrom" => "القارعة",
+        "hto" => "الليل",
+        "mto" => "الناس",
+        "mfrom" => "المسد",
+        "starsCount" => 1,
+        "list" => [false,true,false],
+        "hasFire" => false,
+      ],
     ],
     "الاثلاثاء 12/5" => []
   
