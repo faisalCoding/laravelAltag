@@ -58,3 +58,11 @@ Route::get('/cs', function () {
     ]);
         return $day;
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+Route::get('/dhash', function () {
+    return view('dash');
+});

@@ -16,7 +16,7 @@ use App\Models\StudensState;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -34,6 +34,11 @@ if($md5 ==  md5(serialize($resulte))){
 return response()->json([
 "md5" => md5(serialize($resulte)),
 "data" => $resulte]);
+});
+
+
+Route::get('date', function () {
+    return view('date');
 });
 
 
