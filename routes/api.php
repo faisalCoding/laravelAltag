@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Day;
+use App\Models\StudensState;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,55 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/info/{md5}', function ($md5) {
 
 
-  $resulte = [
-       
-    "الاحد 12/3" => [
-      1 => [
-        "name" => "خالد",
-        "hfrom" => "القارعة",
-        "hto" => "الليل",
-        "mto" => "الناس",
-        "mfrom" => "المسد",
-        "starsCount" => 3,
-        "list" => [true,true,true],
-        "hasFire" => true,
-      ],
-      2 => [
-        "name" => "حسام",
-        "hfrom" => "القارعة",
-        "hto" => "الليل",
-        "mto" => "الناس",
-        "mfrom" => "المسد",
-        "starsCount" => 2,
-        "list" => [true,false,true],
-        "hasFire" => true,
-      ],
-    ],
-    "الاثنين 12/4" => [
-      1 => [
-        "name" => "خالد",
-        "hfrom" => "القارعة",
-        "hto" => "الليل",
-        "mto" => "الناس",
-        "mfrom" => "المسد",
-        "starsCount" => 3,
-        "list" => [false,false,false],
-        "hasFire" => false,
-      ],
-      7 => [
-        "name" => "حسنون",
-        "hfrom" => "القارعة",
-        "hto" => "الليل",
-        "mto" => "الناس",
-        "mfrom" => "المسد",
-        "starsCount" => 1,
-        "list" => [false,true,false],
-        "hasFire" => false,
-      ],
-    ],
-    "الاثلاثاء 12/5" => []
-  
-];
+  $resulte = Day::with('studensStates')->get() ;
 
 if($md5 ==  md5(serialize($resulte))){
   return response()->json([
