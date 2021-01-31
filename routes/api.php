@@ -27,7 +27,7 @@ Route::get('/info/{md5}', function ($md5) {
 
 if($md5 ==  md5(serialize($resulte))){
   return response()->json([
-    "update" => "no update avalble"
+    "update" => "no update  avalble"
   ]);
 }
 
