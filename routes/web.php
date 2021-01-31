@@ -46,7 +46,7 @@ $day = Day::create([
 
 Route::get('/cs', function () {
     $day = StudensState::create([
-        'name'       => 'ابو لستة',
+        'name'       => 'ابو انتجر',
         'hfrom'      => 'الفلق',
         'hto'        => 'الناس',
         'mto'        => 'الناس',
@@ -54,7 +54,7 @@ Route::get('/cs', function () {
         'starsCount' => 2,
         'list'       =>[true,false,false],
         'hasFire'    => true,
-        'day_id'      => 2,
+        'day_id'      => 1,
     ]);
         return $day;
 });
