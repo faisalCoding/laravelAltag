@@ -13,7 +13,7 @@ use App\Models\StudensState;
 | contains the "web" middleware group. Now create something great!
 |
 */
-header('Content-Type: application/json');
+
 Route::get('/', function () {
     return view('welcome');
 });
