@@ -42,12 +42,12 @@ Route::get('date', function () {
 });
 
 
-Route::get('mcount', function () {
-  return StudensState::sum('mcount');
-});
 
 Route::get('tcount', function () {
-  return count(StudensState::get());
+  return response()->json([
+    'tcoun' => count(StudensState::get()),
+    'mcount' =>  StudensState::sum('mcount')
+  ]);
 });
 
 
