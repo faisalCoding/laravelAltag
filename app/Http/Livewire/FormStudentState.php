@@ -21,7 +21,7 @@ class FormStudentState extends Component
         'mcount'        => 11,
         'starsCount' => [],
         'list'       => [false,false,true],
-        'hasFire'    => true,
+        'hasFire'    => false,
         'day_id'      => 1,
     ];
 

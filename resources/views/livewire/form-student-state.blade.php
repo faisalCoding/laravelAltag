@@ -43,7 +43,7 @@
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <label>وسام</label>
 
-                        <div id="sticker" class="flex items-center w-10 h-10 text-center justify-center rounded-lg cursor-pointer select-none"  style="background-color:  @if ($studentState['hasFire']) gray @else darkturquoise @endif "><span class="material-icons text-lg text-white">star</span></div>
+                        <div id="sticker" class="flex items-center w-10 h-10 text-center justify-center rounded-lg cursor-pointer select-none"  style="background-color:  @if ($studentState['hasFire']) darkturquoise @else gray @endif "><span class="material-icons text-lg text-white">star</span></div>
                         <input id="sticker_input" type="checkbox" class="hidden" wire:model="studentState.hasFire">
 
                     </div>
