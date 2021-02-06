@@ -17,7 +17,7 @@ use App\Models\StudensState;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
 Route::get('/info/{md5}', function ($md5) {
@@ -25,15 +25,16 @@ Route::get('/info/{md5}', function ($md5) {
 
   $resulte = Day::with('studensStates')->orderBy('date', 'desc')->get();
 
-if($md5 ==  md5(serialize($resulte))){
-  return response()->json([
-    "update" => "no update  avalble"
-  ]);
-}
+  if ($md5 ==  md5(serialize($resulte))) {
+    return response()->json([
+      "update" => "no update  avalble"
+    ]);
+  }
 
-return response()->json([
-"md5" => md5(serialize($resulte)),
-"data" => $resulte]);
+  return response()->json([
+    "md5" => md5(serialize($resulte)),
+    "data" => $resulte
+  ]);
 });
 
 
@@ -51,5 +52,6 @@ Route::get('tcount', function () {
 });
 
 
-
-
+Route::get('trend', function () {
+  return StudensState::select('name')->where('hasFire' , true)->orderBy('created_at','desc')->first();
+});
