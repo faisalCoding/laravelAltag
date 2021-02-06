@@ -63,6 +63,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/dhash', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
     return view('dash');
-});
+})->name('dash');

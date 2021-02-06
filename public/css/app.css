@@ -32709,6 +32709,10 @@ select {
           animation: bounce 1s infinite;
 }
 
+main{
+  font-family: 'Tajawal', sans-serif;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -192153,4 +192157,3 @@ select {
             animation: bounce 1s infinite;
   }
 }
-

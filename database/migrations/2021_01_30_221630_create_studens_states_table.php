@@ -21,8 +21,10 @@ class CreateStudensStatesTable extends Migration
             $table->string('name');
             $table->string('hfrom');
             $table->string('hto');
+            $table->integer('hcount');
             $table->string('mfrom');
             $table->string('mto');
+            $table->integer('mcount');
             $table->integer('starsCount');
             $table->string('list');
             $table->boolean('hasFire');

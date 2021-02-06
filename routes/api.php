@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/info/{md5}', function ($md5) {
 
 
-  $resulte = Day::with('studensStates')->get() ;
+  $resulte = Day::with('studensStates')->orderBy('date', 'desc')->get();
 
 if($md5 ==  md5(serialize($resulte))){
   return response()->json([
@@ -38,7 +38,16 @@ return response()->json([
 
 
 Route::get('date', function () {
-    return view('date');
+  return view('date');
+});
+
+
+Route::get('mcount', function () {
+  return StudensState::sum('mcount');
+});
+
+Route::get('tcount', function () {
+  return count(StudensState::get());
 });
 
 

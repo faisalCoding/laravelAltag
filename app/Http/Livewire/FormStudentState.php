@@ -9,16 +9,18 @@ use App\Models\StudensState;
 
 
 class FormStudentState extends Component
-{   
+{
 
     public $studentState = [
-        'name'       => 'ابو لايف واير',
+        'name'       => 'ابو لايف واير',     
         'hfrom'      => 'الفلق',
         'hto'        => 'الناس',
-        'mto'        => 'الناس',
+        'hcount'        => 5,
         'mfrom'      => 'القارعة',
+        'mto'        => 'الناس',
+        'mcount'        => 11,
         'starsCount' => [],
-        'list'       =>[false,true,true],
+        'list'       => [false,false,true],
         'hasFire'    => true,
         'day_id'      => 1,
     ];
@@ -26,29 +28,44 @@ class FormStudentState extends Component
     public $days = [];
     public $newDayName;
 
-    
+
     public function render()
     {
 
-        $this->days = Day::get();
+        $this->days = Day::all()->sortByDesc('date');
+
+
+        
 
         return view('livewire.form-student-state');
     }
 
-    public function createUser(){
-        StudensState::create( [
+    public function createUser()
+    {   
+        $count = 0;
+
+        // foreach( $this->studentState['starsCount'] as $boolean){
+        //     $boolean?$count++:null;
+        // }
+        StudensState::create([
             'name'       => $this->studentState['name'],
             'hfrom'       => $this->studentState['hfrom'],
             'hto'       => $this->studentState['hto'],
-            'mto'       => $this->studentState['mto'],
+            'hcount'        => $this->studentState['hcount'],
             'mfrom'       => $this->studentState['mfrom'],
-            'starsCount'       => count($this->studentState['starsCount']),
+            'mto'       => $this->studentState['mto'],
+            'mcount'        => intval($this->studentState['mcount']),
+            'starsCount'       => intval($this->studentState['starsCount']),
             'list'       => $this->studentState['list'],
             'hasFire'       => $this->studentState['hasFire'],
             'day_id'       => $this->studentState['day_id'],
         ]);
+            
+        dd( $this->studentState);
+        
     }
-    public function newDay(){
+    public function newDay()
+    {
         Day::create(['date' => $this->newDayName]);
     }
 }
