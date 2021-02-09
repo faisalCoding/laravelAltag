@@ -11,8 +11,8 @@ class Day extends Model
 {
     use HasFactory;
 
-    protected $fillable =['date'];
-    protected $hidden =['created_at','updated_at','id'];
+    protected $fillable = ['date'];
+    protected $hidden = ['created_at', 'updated_at', 'id'];
 
     public function studensStates()
     {

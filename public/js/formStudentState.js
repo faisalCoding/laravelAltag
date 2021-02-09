@@ -10,68 +10,51 @@
 var _this = this;
 
 window.addEventListener('load', function () {
+  //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
   list_container = document.querySelector('#list_container');
   list_container.querySelectorAll('.chk_js').forEach(function (element) {
     var checkbox = element.querySelector('input[type="checkbox"]');
 
     element.onclick = function () {
-      checkbox.click();
+      return checkbox.click();
     };
-  });
+  }); //----------------------------------------------
+  // one blue star sticker  click checkbox
+
   sticker = document.querySelector('#sticker');
   sticker_input = document.querySelector('#sticker_input');
 
   sticker.onclick = function () {
     return sticker_input.click();
-  };
+  }; //----------------------------------------------
+  //three stars chang color on hover and set color on click it and choise radio input
+
 
   startings = [document.querySelector('#staring-1'), document.querySelector('#staring-2'), document.querySelector('#staring-3')];
   radios = [document.querySelector('#star-1'), document.querySelector('#star-2'), document.querySelector('#star-3')];
   startings.forEach(function (e, i) {
     return e.addEventListener('mouseenter', function (e) {
-      return onMouseEnterStare(i, _this);
-    });
-  });
-  startings.forEach(function (e, i) {
-    return e.addEventListener('mouseleave', function (e) {
-      return onMouseleaveStare(i, _this);
+      return onMouseEnterStar(i, _this);
     });
   });
   startings.forEach(function (e, i) {
     return e.addEventListener('click', function (e) {
-      return onMouseClickStare(i, _this);
+      return onMouseClickStar(i, _this);
     });
   });
 
-  function onMouseEnterStare(snum, ele) {
+  function onMouseEnterStar(snum, ele) {
     startings.forEach(function (e, i) {
-      return i <= snum ? e.classList.add('text-indigo-500') : null;
+      return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
     });
   }
 
-  function onMouseleaveStare(snum, ele) {
-    startings.forEach(function (e, i) {
-      return i <= snum ? e.classList.remove('text-indigo-500') : null;
-    });
-  }
-
-  function onMouseClickStare(snum, ele) {
+  function onMouseClickStar(snum, ele) {
     radios[snum].click();
     startings.forEach(function (e, i) {
       return i <= snum ? e.classList.add('text-indigo-700') : null;
     });
-  } // star_1.onclick = ()=>{
-  //     star_2.checked = false;
-  //     star_3.checked = false;
-  //     if (star_2.checked) {
-  //        setTimeout(()=>{
-  //            star_2.click()
-  //        },1000) 
-  //     }
-  //     if (star_3.checked) {
-  //         star_3.click()
-  //     }
-  // }
+  } //----------------------------------------------
 
 });
 

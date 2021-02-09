@@ -12,27 +12,36 @@ class FormStudentState extends Component
 {
 
     public $studentState = [
-        'name'       => 'ابو لايف واير',     
-        'hfrom'      => 'الفلق',
-        'hto'        => 'الناس',
-        'hcount'        => 5,
-        'mfrom'      => 'القارعة',
-        'mto'        => 'الناس',
-        'mcount'        => 11,
+        'name'       => '',
+        'hfrom'      => '',
+        'hto'        => '',
+        'hcount'        => 0,
+        'mfrom'      => '',
+        'mto'        => '',
+        'mcount'        => 0,
         'starsCount' => [],
-        'list'       => [false,false,true],
+        'list'       => [false,false,false],
         'hasFire'    => false,
         'day_id'      => 1,
     ];
 
     public $days = [];
+    public $studentSlected = [
+        'refresh' => true,
+        'name' => null
+    ];
     public $newDayName;
+    public $names;
+    public $selected =true;
 
 
     public function render()
     {
 
         $this->days = Day::all()->sortByDesc('date');
+        $this->getStudents();
+        $this->setStudentSelected();
+        
 
 
         
@@ -68,4 +77,25 @@ class FormStudentState extends Component
     {
         Day::create(['date' => $this->newDayName]);
     }
+
+    public function getStudents()
+    {
+        $this->names =  StudensState::select('name')->distinct()->get() ;
+    }
+
+    public function selectChang()
+    {
+        $this->studentSlected['refresh'] =  true;
+    }
+
+    public function setStudentSelected()
+    {
+        if ($this->studentSlected['name'] && $this->studentSlected['refresh']) {
+            $this->studentState = StudensState::orderBy('created_at','desc')->where('name',$this->studentSlected['name'])->first()->toArray();
+            $this->studentSlected['refresh'] =false;
+        }
+       
+        
+    }
+
 }
