@@ -1,8 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-
-main{
+main {
     font-family: 'Tajawal', sans-serif;
+}
+
+li:hover {
+    border: rgb(78, 68, 224) 1px dashed inset;
 }

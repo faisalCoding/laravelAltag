@@ -10,6 +10,9 @@ use App\Models\StudensState;
 
 class FormStudentState extends Component
 {
+    protected $listeners = [
+        'daydeleted' => '$refresh',
+    ];
 
     public $studentState = [
         'name'       => '',
@@ -76,6 +79,8 @@ class FormStudentState extends Component
     public function newDay()
     {
         Day::create(['date' => $this->newDayName]);
+
+        $this->emit('newday');
     }
 
     public function getStudents()

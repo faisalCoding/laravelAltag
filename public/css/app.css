@@ -32709,8 +32709,12 @@ select {
           animation: bounce 1s infinite;
 }
 
-main{
+main {
   font-family: 'Tajawal', sans-serif;
+}
+
+li:hover {
+  border: rgb(78, 68, 224) 1px dashed inset;
 }
 
 @media (min-width: 640px) {

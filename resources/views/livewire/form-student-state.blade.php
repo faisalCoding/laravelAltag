@@ -1,7 +1,7 @@
 <div dir="rtl">
 
-    <header class="flex items-center w-5/6  mx-auto justify-between">
-        <div class="container right">
+    <header class="w-5/6 mx-auto">
+        <div class="w-1/1">
             <div class="p-2 w-1/1">
                 <h1>اضف سجل حديد</h1>
 
@@ -26,7 +26,7 @@
                         <div>الطالب</div>
                         <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
                             wire:model="studentState.name">
-                    </div>
+                    </div>  
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <div>الحفظ من</div>
@@ -152,7 +152,7 @@
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <div>تاريخ</div>
 
-                        <select class="row-span-2" wire:model="studentState.day_id">
+                        <select class="row-span-2" wire:model="studentState.day_id" >
                             @foreach ($days as $day)
                                 <option value="{{ $day->id }}">{{ $day->date }} </option>
 
@@ -165,10 +165,6 @@
 
             </div>
         </div>
-        <div class="p-5 space-y-5 w-5/12">
 
-            <button wire:click.prevent="createUser" class="btn- dash shadow-lg">Learn More</button>
-
-        </div>
     </header>
 </div>
