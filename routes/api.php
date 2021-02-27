@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Day;
-use App\Models\StudensState;
+use App\Models\StudentsState;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/info/{md5}', function ($md5) {
 
 
-  $resulte = Day::with('studensStates')->orderBy('date', 'desc')->get();
+  $resulte = Day::with('studentsStates')->orderBy('date', 'desc')->get();
 
   if ($md5 ==  md5(serialize($resulte))) {
     return response()->json([
@@ -46,12 +46,12 @@ Route::get('date', function () {
 
 Route::get('tcount', function () {
   return response()->json([
-    'tcoun' => count(StudensState::get()),
-    'mcount' =>  StudensState::sum('mcount')
+    'tcoun' => count(StudentsState::get()),
+    'mcount' =>  StudentsState::sum('mcount')
   ]);
 });
 
 
 Route::get('trend', function () {
-  return StudensState::select('name')->where('hasFire' , true)->orderBy('created_at','desc')->first();
+  return StudentsState::select('name')->where('hasFire' , true)->orderBy('created_at','desc')->first();
 });
