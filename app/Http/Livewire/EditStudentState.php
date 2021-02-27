@@ -79,7 +79,7 @@ class EditStudentState extends Component
                 'mto'       => $this->studentState['mto'],
                 'mcount'        => intval($this->studentState['mcount']),
                 'starsCount'       => intval($this->studentState['starsCount']),
-                'list'       => $this->studentState['list'],
+                'list'       => serialize($this->studentState['list']),
                 'hasFire'       => $this->studentState['hasFire'],
                 'day_id'       => $this->studentState['day_id'],
             ]);
