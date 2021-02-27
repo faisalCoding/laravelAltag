@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/date.js": "/js/date.js",
     "/js/drowerWindows.js": "/js/drowerWindows.js",
+    "/js/popup.js": "/js/popup.js",
     "/js/formStudentState.js": "/js/formStudentState.js",
     "/css/app.css": "/css/app.css"
 }

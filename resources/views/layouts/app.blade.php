@@ -26,7 +26,7 @@
 
         
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-gray-200">
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-200">
@@ -42,7 +42,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="">
                 @yield('content')
             </main>
         </div>

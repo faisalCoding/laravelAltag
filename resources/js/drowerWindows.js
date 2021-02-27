@@ -5,7 +5,7 @@ window.onload = () => {
     handelDrowerWindos.forEach(element => {
 
         element.querySelector('*[do-drowing-js]').onclick = (e) => {
-            content =  document.querySelector('*[drower-content-js]');
+            content = element.querySelector('*[drower-content-js]');
 
             if (content.classList.contains('hidden')) {
                 e.target.innerHTML = 'keyboard_arrow_up'
@@ -18,7 +18,7 @@ window.onload = () => {
                 element.classList.add('h-16')
             }
             console.log(e.target)
-            
+
         }
     });
 }

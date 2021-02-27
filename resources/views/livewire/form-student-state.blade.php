@@ -1,22 +1,39 @@
 <div dir="rtl">
-
+   
     <header class="w-5/6 mx-auto">
         <div class="w-1/1">
-            <div class="p-2 w-1/1">
-                <h1>اضف سجل حديد</h1>
+            <div class="p-2 w-1/1 bg-white mx-auto mt-5 rounded-xl duration-500 overflow-hidden flex justify-between">
+                <div class="">
+                    <div class="">
+                        <h1>اضف طالب جديد</h1>
+                       <input type="text" class=" bg-gray-100 border-none text-gray-700 rounded-lg"
+                           wire:model="newStudentName">
+                       <button wire:click.prevent="newStudent" class=" px-10 bg-blue-400 rounded-lg text-white h-10">اضف</button>
+                   </div>
+                    <h1>اختر طالب للتسميع</h1>
+                    <select class="" wire:model="studentSlected.name" wire:change="selectChang()">
+                        @foreach ($names as $name)
+                            <option value="{{ $name->name }}">{{ $name->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                <select class="row-span-2" wire:model="studentSlected.name" wire:change="selectChang()">
-                    @foreach ($names as $name)
-                        <option value="{{ $name->name }}">{{ $name->name }}</option>
-                    @endforeach
-                </select>
-
-                <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
-                    wire:model="newDayName" onfocus="this.value=`${dateOb.months_num}/${dateOb.day}  ${dateOb.months}`">
-                <button wire:click.prevent="newDay" class="h-70 px-10 bg-green-300">اضف</button>
+                <div class="">
+                    <h1>اضف يوم جديد</h1>
+                    <input type="text" class=" bg-gray-100 border-none text-gray-700 rounded-lg"
+                        wire:model="newDayName"
+                        onfocus="this.value=`${dateOb.months_num}/${dateOb.day}  ${dateOb.months}`">
+                    <button wire:click.prevent="newDay" class=" px-10 bg-blue-400 rounded-lg text-white h-10">اضف</button>
+                </div>
+                <div class="">
+                     <h1>اضف اسبوع جديد</h1>
+                    <input type="text" class=" bg-gray-100 border-none text-gray-700 rounded-lg"
+                        wire:model="newWeekName">
+                    <button wire:click.prevent="newWeek" class=" px-10 bg-blue-400 rounded-lg text-white h-10">اضف</button>
+                </div>
 
             </div>
-            <div class="p-2 w-1/1 bg-white">
+            <div class="p-2 w-1/1 bg-white mx-auto mt-8 rounded-xl duration-500 overflow-hidden">
 
                 <h1>معلومات تسميع الطالب</h1>
 
@@ -26,7 +43,7 @@
                         <div>الطالب</div>
                         <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
                             wire:model="studentState.name">
-                    </div>  
+                    </div>
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <div>الحفظ من</div>
@@ -93,7 +110,7 @@
                     </div>
 
                     <button wire:click.prevent="createUser"
-                        class="h-70 px-10 bg-green-300 col-span-2 rounded-lg text-white text-2xl ">تسجيل</button>
+                        class="h-70 px-10 bg-blue-400 col-span-2 rounded-lg text-white text-2xl ">تسجيل</button>
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1 row-span-2">
 
@@ -152,7 +169,7 @@
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <div>تاريخ</div>
 
-                        <select class="row-span-2" wire:model="studentState.day_id" >
+                        <select class="row-span-2" wire:model="studentState.day_id">
                             @foreach ($days as $day)
                                 <option value="{{ $day->id }}">{{ $day->date }} </option>
 

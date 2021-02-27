@@ -26,6 +26,8 @@ class AddDayToWeek extends Component
     protected $listeners = [
         'daydeleted' => '$refresh',
         'newday' => '$refresh',
+        'newweek' => '$refresh',
+        'weekedit' => '',
     ];
 
     public function render()
@@ -40,20 +42,22 @@ class AddDayToWeek extends Component
 
     public function updateDayToWeek($day)
     {
-        if (is_array($this->weeksSelected) || is_object($this->weeksSelected)) {
-            foreach ($this->weeksSelected as $key => $value) {
-
-                Day::where('id', $this->days[$key]['id'])
-                    ->update([
-                        'week_id' => $value,
-                        'date' =>  $this->dayDate[$key]
-                    ]);
+        $d = Day::all()->sortByDesc('date')->toArray();
+        if ($this->weeks != Week::all()->toArray() || $this->days != $d) {
+            foreach ($this->days as $k => $day) {
+                if ($day['week_id'] != $d[$k]['week_id'] || $day['date'] != $d[$k]['date']) {
+                    Day::where('id', $day['id'])->update(
+                        [
+                            'week_id' => $day['week_id'],
+                            'date' => $day['date'],
+                        ]
+                    );
+                }
             }
+            $this->refDays = true;
+            $this->refWeeks = true;
+            $this->emit('daydeleted');
         }
-        $this->days = Day::all()->sortByDesc('date')->toArray();
-
-        $this->refWeeks = true;
-        $this->refDays = true;
     }
 
     protected $rules = [
@@ -88,30 +92,26 @@ class AddDayToWeek extends Component
 
     public function handelChnge()
     {
-        if ($this->weeks == Week::all()->toArray()) {
-            $d = Day::all()->sortByDesc('date')->toArray();
-
-            foreach ($this->days as $k => $day) {
-                if ($day['week_id'] != $d[$k]['week_id'] || $day['date'] != $d[$k]['date']) {
-                    Day::where('id', $day['id'])->update(
-                        [
-                            'week_id' => $day['week_id'],
-                            'date' => $day['date'],
-                        ]
-                    );
-                }
-            }
-        }
+   
     }
 
-    public function fun_newday()
+    public function refreshDaysFromDataBase()
     {
         $this->days = Day::all()->sortByDesc('date')->toArray();
-
     }
+    public function refreshWeeksFromDataBase()
+    {
+        $this->weeks = Week::all()->toArray();
+        
+    }
+
 
     protected function getListeners()
     {
-        return ['newday' => 'fun_newday'];
+        return [
+            'newday' => 'refreshDaysFromDataBase',
+            'newweek' => 'refreshWeeksFromDataBase',
+            'weekedit' => 'refreshWeeksFromDataBase',
+        ];
     }
 }

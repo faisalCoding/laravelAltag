@@ -6,5 +6,10 @@ main {
 }
 
 li:hover {
-    border: rgb(78, 68, 224) 1px dashed inset;
+    outline: #8f9596 1px dashed;
+}
+
+body {
+    scroll-behavior: smooth !important;
+    scrollbar-width: 100px;
 }

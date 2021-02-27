@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Week;
-use App\Models\StudensState;
+use App\Models\StudentsState;
 
 class Day extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'id'];
+    protected $fillable = ['date','week_id', 'id'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function studensStates()
+    public function studentsStates()
     {
-        return $this->hasMany(StudensState::class);
+        return $this->hasMany(StudentsState::class);
     }
 
     public function week()

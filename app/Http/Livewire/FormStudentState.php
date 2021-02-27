@@ -5,17 +5,20 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\Day;
-use App\Models\StudensState;
+use App\Models\Week;
+use App\Models\Student;
+use App\Models\StudentsState;
 
 
 class FormStudentState extends Component
 {
     protected $listeners = [
         'daydeleted' => '$refresh',
+        'studentedit' => '$refresh',
     ];
 
     public $studentState = [
-        'name'       => '',
+        'name'       => 'sss',
         'hfrom'      => '',
         'hto'        => '',
         'hcount'        => 0,
@@ -34,6 +37,8 @@ class FormStudentState extends Component
         'name' => null
     ];
     public $newDayName;
+    public $newWeekName;
+    public $newStudentName;
     public $names;
     public $selected =true;
 
@@ -54,12 +59,7 @@ class FormStudentState extends Component
 
     public function createUser()
     {   
-        $count = 0;
-
-        // foreach( $this->studentState['starsCount'] as $boolean){
-        //     $boolean?$count++:null;
-        // }
-        StudensState::create([
+        StudentsState::create([
             'name'       => $this->studentState['name'],
             'hfrom'       => $this->studentState['hfrom'],
             'hto'       => $this->studentState['hto'],
@@ -72,8 +72,8 @@ class FormStudentState extends Component
             'hasFire'       => $this->studentState['hasFire'],
             'day_id'       => $this->studentState['day_id'],
         ]);
-            
-        dd( $this->studentState);
+            $this->emit('newstudentsState');
+        //dd( $this->studentState);
         
     }
     public function newDay()
@@ -82,10 +82,23 @@ class FormStudentState extends Component
 
         $this->emit('newday');
     }
+    public function newWeek()
+    {
+        Week::create(['name' => $this->newWeekName]);
+    
+        $this->emit('newweek');
+    }
+
+    public function newStudent()
+    {
+        Student::create(['name' => $this->newStudentName]);
+    
+        $this->emit('newstudent');
+    }
 
     public function getStudents()
     {
-        $this->names =  StudensState::select('name')->distinct()->get() ;
+        $this->names =  Student::select('name')->distinct()->get() ;
     }
 
     public function selectChang()
@@ -96,7 +109,12 @@ class FormStudentState extends Component
     public function setStudentSelected()
     {
         if ($this->studentSlected['name'] && $this->studentSlected['refresh']) {
-            $this->studentState = StudensState::orderBy('created_at','desc')->where('name',$this->studentSlected['name'])->first()->toArray();
+            $getState =  StudentsState::orderBy('created_at','desc')->where('name',$this->studentSlected['name'])->first();
+            if ($getState) {
+              $this->studentState = $getState->toArray();
+            }else{
+                $this->studentState['name'] = $this->studentSlected['name'];
+            }
             $this->studentSlected['refresh'] =false;
         }
        

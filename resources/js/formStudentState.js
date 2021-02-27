@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
 
         var checkbox = element.querySelector('input[type="checkbox"]');
 
-        element.onclick = ()=>checkbox.click();
+        element.onclick = () => checkbox.click();
 
     });
     //----------------------------------------------
@@ -38,6 +38,7 @@ window.addEventListener('load', () => {
     function onMouseEnterStar(snum, ele) {
         startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500'))
     }
+
     function onMouseClickStar(snum, ele) {
         radios[snum].click()
         startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-700') : null)
