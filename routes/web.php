@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Day;
-use App\Models\StudensState;
+use App\Models\StudentsState;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,11 +41,11 @@ $day = Day::create([
 ]);
 
 
-    return  Day::with('studensStates')->get();
+    return  Day::with('studentsStates')->get();
 });
 
 Route::get('/cs', function () {
-    $day = StudensState::create([
+    $day = StudentsState::create([
         'name'       => 'ابو انتجر',
         'hfrom'      => 'الفلق',
         'hto'        => 'الناس',
