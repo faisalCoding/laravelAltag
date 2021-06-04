@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\StudentsState;
+use PDOException;
+
 
 use App\Models\Day;
 //use App\Models\Student;
@@ -84,7 +86,7 @@ class EditStudentState extends Component
                 'day_id'       => $this->studentState['day_id'],
             ]);
              session()->flash('edit-successful');
-        }catch(\Illuminate\Database\QueryException $e){
+        }catch(PDOException $e){
             session()->flash('edit-error');
 
         }

@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ChartsController;
 use App\Models\Day;
 use App\Models\StudentsState;
 
@@ -55,3 +57,5 @@ Route::get('tcount', function () {
 Route::get('trend', function () {
   return StudentsState::select('name')->where('hasFire' , true)->orderBy('created_at','desc')->first();
 });
+
+Route::get('mcount', [ChartsController::class,'fiveTopMaxMStudents']);
