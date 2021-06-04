@@ -16,8 +16,8 @@ class Student extends Model
 
     
     protected $hidden = ['created_at', 'updated_at'];
-public function getMcountAttribute(val){
+      public function getMcountAttribute($val){
 
-    return 
+    return ;
     }
 }
