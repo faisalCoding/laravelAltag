@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d371489d36e1b9d80cf935bef48a68f9",
+    "content-hash": "b0a4b5a2be04b0f905be3fa13b53385d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2116,16 +2116,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.9.0",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "eb191ddfc3ec04bbead33593bf982e871095f25c"
+                "reference": "5de9d0ced8ae50dacb00c16077115f32e94d13f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/eb191ddfc3ec04bbead33593bf982e871095f25c",
-                "reference": "eb191ddfc3ec04bbead33593bf982e871095f25c",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/5de9d0ced8ae50dacb00c16077115f32e94d13f2",
+                "reference": "5de9d0ced8ae50dacb00c16077115f32e94d13f2",
                 "shasum": ""
             },
             "require": {
@@ -2176,7 +2176,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2021-01-26T19:47:38+00:00"
+            "time": "2021-05-25T16:43:06+00:00"
         },
         {
             "name": "laravel/tinker",
