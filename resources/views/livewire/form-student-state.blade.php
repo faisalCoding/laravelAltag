@@ -37,12 +37,12 @@
 
                 <h1>معلومات تسميع الطالب</h1>
 
-                <div class="w-1/1  bg-gray grid grid-rows-4 grid-flow-col gap-4">
+                <div class="w-1/1  bg-gray grid grid-rows-4 grid-flow-col gap-4 grid-cols-3">
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">
                         <div>الطالب</div>
                         <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
-                            wire:model="studentState.name">
+                            wire:model="studentState.user_id">
                     </div>
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1">

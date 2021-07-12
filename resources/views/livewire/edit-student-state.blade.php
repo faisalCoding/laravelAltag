@@ -40,7 +40,7 @@
                         <div class="--bg-blue-100 grid grid-row-3 gap-1">
                             <div>الطالب</div>
                             <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
-                                wire:model="studentState.name">
+                                wire:model="studentState.user_id">
                         </div>
 
                         <div class="--bg-blue-100 grid grid-row-3 gap-1">
@@ -75,19 +75,19 @@
                             <div>نجوم</div>
                             <div class="row-span-2 flex items-center justify-between w-3/4 mx-auto py-2 select-none">
 
-                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']>= '1') text-indigo-700 @endif" id="staring-1" >star</span>
+                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']>= '1') text-indigo-700 @endif" id="e-staring-1" >star</span>
                                 </div>
-                                <input id="star-1" value="1" type="radio" name="star" class="hidden"
+                                <input id="e-star-1" value="1" type="radio" name="star" class="hidden"
                                     wire:model="studentState.starsCount">
 
-                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']>= '2') text-indigo-700 @endif" id="staring-2" >star</span>
+                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']>= '2') text-indigo-700 @endif" id="e-staring-2" >star</span>
                                 </div>
-                                <input id="star-2" value="2" type="radio" name="star" class="hidden"
+                                <input id="e-star-2" value="2" type="radio" name="star" class="hidden"
                                     wire:model="studentState.starsCount">
 
-                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']=='3' ) text-indigo-700 @endif" id="staring-3">star</span>
+                                <div><span class="material-icons cursor-pointer text-gray-400 text-6xl @if ($studentState['starsCount']=='3' ) text-indigo-700 @endif" id="e-staring-3">star</span>
                                 </div>
-                                <input id="star-3" value="3" type="radio" name="star" class="hidden"
+                                <input id="e-star-3" value="3" type="radio" name="star" class="hidden"
                                     wire:model="studentState.starsCount">
 
                             </div>
@@ -117,7 +117,7 @@
 
                             <script src="{{ asset('/js/formStudentState.js') }}"></script>
                             <div>امتيازات</div>
-                            <div id="list_container" class="row-span-2 grid grid-row-3 gap-2 select-none">
+                            <div id="e_list_container" class="row-span-2 grid grid-row-3 gap-2 select-none">
                                 <div class="grid grid-cols-1 grap-2 w-1/1 chk_js">
 
                                     <div class="grid grid-cols-4 gap-1 cursor-pointer">
@@ -191,7 +191,7 @@
                                 onclick="@this.select({{ $key }})">
                                 <div class="w-1/2">
 
-                                    <h1>{{ $student['name'] }}</h1>
+                                    <h1>{{ $student['user_id'] }}</h1>
 
                                     @foreach ($days as $k => $day)
                                         @if ($day->id == $student['day_id'])
@@ -216,6 +216,7 @@
             </div>
 
         </div>
+        <script src="{{ asset('/js/formStudentState.js') }}"></script>
 
     </div>
 

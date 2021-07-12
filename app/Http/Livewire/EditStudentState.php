@@ -16,12 +16,13 @@ class EditStudentState extends Component
     protected $listeners = [
         'daydeleted' => '$refresh',
         'newstudentsState' => '$refresh',
+        'StudentsStateUpadate' => '$refresh',
         'newday' => '$refresh',
 
     ];
 
     public $studentState = [
-        'name'       => 'xcds',
+        'user_id'       => '1',
         'hfrom'      => 'd',
         'hto'        => 'dd',
         'hcount'        => 0,
@@ -73,7 +74,7 @@ class EditStudentState extends Component
 
         try{
             StudentsState::where('id', $this->selectId)->update([
-                'name'       => $this->studentState['name'],
+                'user_id'       => $this->studentState['user_id'],
                 'hfrom'       => $this->studentState['hfrom'],
                 'hto'       => $this->studentState['hto'],
                 'hcount'        => $this->studentState['hcount'],
@@ -91,13 +92,13 @@ class EditStudentState extends Component
 
         }
 
-        
+        $this->emit('StudentsStateUpadate');
     }
     public function select($index)
     {
         $this->selectId = $this->studentStates[$index]['id'];
         $this->studentState = [
-            'name'       => $this->studentStates[$index]['name'],
+            'user_id'       => $this->studentStates[$index]['user_id'],
             'hfrom'      => $this->studentStates[$index]['hfrom'],
             'hto'        => $this->studentStates[$index]['hto'],
             'hcount'        => $this->studentStates[$index]['hcount'],
@@ -107,7 +108,7 @@ class EditStudentState extends Component
             'starsCount' => $this->studentStates[$index]['starsCount'],
             'list'       => $this->studentStates[$index]['list'],
             'hasFire'    => $this->studentStates[$index]['hasFire'],
-            'day_id'      => $this->studentStates[$index]['hasFire'],
+            'day_id'      => $this->studentStates[$index]['day_id'],
         ];
     }
 
@@ -130,6 +131,7 @@ class EditStudentState extends Component
     {
         return [
             'newstudentsState' => 'refreshStudentStateFromDataBase',
+            'StudentsStateUpadate' => 'refreshStudentStateFromDataBase',
         ];
     }
 }

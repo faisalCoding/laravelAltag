@@ -1,4 +1,5 @@
-
+<div>
+    
     {{-- <script src="{{ asset('js/drowerWindows.js') }}"></script> --}}
 
     <div class="title w-full bg-gray-100 h-16 flex justify-between items-center px-5 select-none ">
@@ -33,4 +34,5 @@
         </ul>
     </div>
 
+</div>
 

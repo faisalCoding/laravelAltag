@@ -43,7 +43,7 @@
                                     </div>
 
                                     <!-- Team Settings -->
-                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                    <x-jet-dropdown-link href="{{ route('teams.show', Auth::guard('teacher')->user()->currentTeam->id) }}">
                                         {{ __('Team Settings') }}
                                     </x-jet-dropdown-link>
 
@@ -153,7 +153,7 @@
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-base text-gray-800">{{ Auth::guard('teacher')->user()->name }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
@@ -171,10 +171,10 @@
                 @endif
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('teacher.logout') }}">
                     @csrf
 
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                    <x-jet-responsive-nav-link href="{{ route('teacher.logout') }}"
                                    onclick="event.preventDefault();
                                     this.closest('form').submit();">
                         {{ __('Logout') }}

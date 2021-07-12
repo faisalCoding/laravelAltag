@@ -1,4 +1,5 @@
-
+<div>
+    
 
     <script src="{{ asset('js/drowerWindows.js') }}"></script>
 
@@ -37,14 +38,15 @@
                     <div class="w-1/2 flex justify-between">
 
                         <button class="w-52 ml-2 h-10 text-white bg-blue-400 rounded-xl"
-                            wire:click.prevent="updateDayToWeek('{{ $day['id'] }}') ">تحديث</button>
+                            wire:click.prevent="updateDayToWeek({{ $day['id'] }}) ">تحديث</button>
                         <button class="w-24 h-10 text-red-500  rounded-xl bg-red-50"
-                            wire:click.prevent="deleteDay('{{ $day['id'] }}')">حذف</button>
+                            wire:click.prevent="deleteDay({{ $day['id'] }})">حذف</button>
                     </div>
                 </li>
 
             @endforeach
         </ul>
     </div>
+</div>
 
 

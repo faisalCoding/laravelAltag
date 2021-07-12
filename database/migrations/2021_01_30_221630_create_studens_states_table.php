@@ -18,7 +18,7 @@ class CreateStudensStatesTable extends Migration
             $table->id();
 
             $table->unsignedInteger('day_id');
-            $table->string('name');
+            $table->unsignedInteger('user_id');
             $table->string('hfrom');
             $table->string('hto');
             $table->integer('hcount');

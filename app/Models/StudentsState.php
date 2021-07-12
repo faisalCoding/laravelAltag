@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Day;
-
+use App\Models\User;
 
 class StudentsState extends Model
 {
@@ -14,7 +14,7 @@ class StudentsState extends Model
 
     protected $fillable = [
         'id',
-        'name',
+        'user_id',
         'hfrom',
         'hto',
         'hcount',
@@ -34,6 +34,12 @@ class StudentsState extends Model
     {
 
         return $this->belongTo(Day::class, 'day_id');
+    }
+
+    public function user()
+    {
+
+        return $this->belongTo(User::class, 'user_id');
     }
 
     public function getListAttribute($val)

@@ -18,7 +18,7 @@ class FormStudentState extends Component
     ];
 
     public $studentState = [
-        'name'       => 'sss',
+        'user_id'       => '1',
         'hfrom'      => '',
         'hto'        => '',
         'hcount'        => 0,
@@ -60,7 +60,7 @@ class FormStudentState extends Component
     public function createUser()
     {   
         StudentsState::create([
-            'name'       => $this->studentState['name'],
+            'user_id'       => $this->studentState['user_id'],
             'hfrom'       => $this->studentState['hfrom'],
             'hto'       => $this->studentState['hto'],
             'hcount'        => $this->studentState['hcount'],

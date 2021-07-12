@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Day;
 use App\Models\StudentsState;
+use App\Http\Controllers\Teacher\TeacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +64,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
+Route::middleware(['auth:teacher', 'verified'])->get('/dash', function () {
     return view('dash');
 })->name('dash');
+
+
+Route::prefix('teacher')->name('teacher.')->group(function(){
+
+    Route::middleware(['guest:teacher','PreventBackHistory'])->group(function(){
+         Route::view('/login','auth.teacher-login')->name('login');
+        //  Route::view('/register','dashboard.doctor.register')->name('register');
+        //  Route::post('/create',[DoctorController::class,'create'])->name('create');
+          Route::post('/check',[TeacherController::class,'check'])->name('check');
+    });
+
+     Route::middleware(['auth:teacher','PreventBackHistory'])->group(function(){
+    //     //  Route::view('/home','dashboard.doctor.home')->name('home');
+           Route::post('logout',[TeacherController::class,'logout'])->name('logout');
+     });
+
+});
