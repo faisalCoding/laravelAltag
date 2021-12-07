@@ -3,8 +3,9 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Student;
+use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
 
 class EditStudents extends Component
 {
@@ -31,22 +32,27 @@ class EditStudents extends Component
     public function initRefStudents()
     {
         if ($this->refStudents) {
-            $this->students = Student::all()->toArray();
+            $teacher = Auth::user();
+            $this->students =  User::where('class_id' , $teacher->class)->select('*')->distinct()->orderBy('have_table')->get()->toArray();
             $this->refStudents = false;
         }
     }
 
     public function editStudent()
     {
-        $d = Student::all()->toArray();
+        $teacher = Auth::user();
+        $d = User::where('class_id' , $teacher->class)->select('*')->distinct()->get()->toArray();
         if ($this->students != $d) {
+          
             
             foreach ($this->students as $k => $student) {
-                if ($student['name'] != $d[$k]['name'] || $student['scores'] != $d[$k]['scores']) {
-                    Student::where('id', $student['id'])->update(
+                if ($student['name'] != $d[$k]['name'] || $student['scores'] != $d[$k]['scores']|| $student['have_table'] != $d[$k]['have_table']|| $student['school_level'] != $d[$k]['school_level']) {
+                    User::where('id', $student['id'])->update(
                         [
                             'name' => $student['name'],
                             'scores' => $student['scores'],
+                            'have_table' => $student['have_table'],
+                            'school_level' => $student['school_level'],
                         ]
                     );
                 }
@@ -57,14 +63,15 @@ class EditStudents extends Component
     }
     public function deleteStudent($studentID)
     {
-        $q = Student::where('id', $studentID)->delete();
+        $q = User::where('id', $studentID)->delete();
         $this->refStudents = true;
         $this->emit('studentedit');
     }
 
     public function refreshStudentsFromDataBase()
     {
-        $this->students = Student::all()->toArray();
+        $teacher = Auth::user();
+        $this->students = User::where('class_id' , $teacher->class)->select('*')->distinct()->get()->toArray();
 
     }
     

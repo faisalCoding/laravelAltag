@@ -17,6 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('school_level');
+            $table->boolean('have_table');
             $table->integer('scores')->default(0);
             
             $table->timestamps();

@@ -18,7 +18,7 @@
             @foreach ($days as $key => $day)
 
                 <li class="days-li flex justify-between mb-2 p-2 rounded-xl">
-                    <div class="w-1/2">
+                    <div class="w-8/12">
 
                         <input type="text" value="{{ $day['date'] }}" wire:model="days.{{ $key }}.date"
                             class=" bg-gray-100 border-none text-gray-700 rounded-lg" >
@@ -35,7 +35,7 @@
                         </select>
 
                     </div>
-                    <div class="w-1/2 flex justify-between">
+                    <div class="w-4/12 flex justify-between">
 
                         <button class="w-52 ml-2 h-10 text-white bg-blue-400 rounded-xl"
                             wire:click.prevent="updateDayToWeek({{ $day['id'] }}) ">تحديث</button>
@@ -46,6 +46,7 @@
 
             @endforeach
         </ul>
+        
     </div>
 </div>
 

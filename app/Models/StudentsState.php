@@ -11,9 +11,11 @@ class StudentsState extends Model
 {
     use HasFactory;
     protected $table ='studens_states';
+    protected $appends =['name'];
 
     protected $fillable = [
         'id',
+        'name',
         'user_id',
         'hfrom',
         'hto',
@@ -33,18 +35,22 @@ class StudentsState extends Model
     public function day()
     {
 
-        return $this->belongTo(Day::class, 'day_id');
+        return $this->belongsTo(Day::class, 'day_id');
     }
 
     public function user()
     {
-
-        return $this->belongTo(User::class, 'user_id');
+        
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function getListAttribute($val)
     {
         return  unserialize($val);
+    }
+    public function getNameAttribute($val)
+    {
+        return  $this->user()->get()->toArray()[0]['name'];
     }
     public function setListAttribute($value)
     {

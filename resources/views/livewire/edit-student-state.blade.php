@@ -40,7 +40,7 @@
                         <div class="--bg-blue-100 grid grid-row-3 gap-1">
                             <div>الطالب</div>
                             <input type="text" class="row-span-2 bg-gray-100 border-none text-gray-700 rounded-lg"
-                                wire:model="studentState.user_id">
+                                wire:model="studentState.name">
                         </div>
 
                         <div class="--bg-blue-100 grid grid-row-3 gap-1">
@@ -63,11 +63,11 @@
                         <div class="--bg-blue-100 grid grid-row-3 gap-1">
                             <div>وسام</div>
 
-                            <div id="sticker"
+                            <div id="e_sticker"
                                 class="flex items-center w-10 h-10 text-center justify-center rounded-lg cursor-pointer select-none"
                                 style="background-color:  @if ($studentState['hasFire']) darkturquoise @else gray @endif "><span class=" material-icons
                                 text-lg text-white">star</span></div>
-                            <input id="sticker_input" type="checkbox" class="hidden" wire:model="studentState.hasFire">
+                            <input id="e_sticker_input" type="checkbox" class="hidden" wire:model="studentState.hasFire">
 
                         </div>
 
@@ -184,14 +184,24 @@
 
                     </div>
                     <ul class="">
+                        <li class="my-3 flex justify-between px-2 bg-gray-50">
+                            <select wire:model="filter_day" class=" border-none rounded-md mx-2">
+                                <option value="0">الكل</option>
+                                @foreach ($days as $day)
+                                <option value="{{ $day->id }}">{{ $day->date }} </option>
 
+                            @endforeach
+                            </select>
+
+                            <button class=" border-none bg-green-800 text-white px-4 py-2" wire:click="copyStates">نسخ المعلومات</button>
+                        </li>
                         @foreach ($studentStates as $key => $student)
 
-                            <li class="studentStates-li flex justify-between mb-2 p-2 rounded-xl"
+                            <li class="studentStates-li flex justify-between mb-2 p-2 rounded-xl select-none cursor-pointer mt-2"
                                 onclick="@this.select({{ $key }})">
                                 <div class="w-1/2">
 
-                                    <h1>{{ $student['user_id'] }}</h1>
+                                    <h1>{{ $student['name'] }}</h1>
 
                                     @foreach ($days as $k => $day)
                                         @if ($day->id == $student['day_id'])
@@ -202,7 +212,7 @@
                                     </select>
 
                                 </div>
-                                <div class="w-1/2 flex justify-between">
+                                <div class="w-1/2 flex justify-end ">
 
                                     <button wire:click.prevent="deleteStudentState('{{ $student['id'] }}')"
                                         class="w-24 h-10 text-red-500  rounded-xl bg-red-50">حذف</button>

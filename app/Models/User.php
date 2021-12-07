@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\StudentsState;
+
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -25,7 +28,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'id',
         'email',
+        'scores',
+        'have_table',
+        'school_level',
+        'class_id',
         'password',
     ];
 
@@ -58,4 +66,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function studentsStates()
+    {
+        return $this->hasMany(StudentsState::class);
+    }
 }

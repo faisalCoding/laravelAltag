@@ -6,9 +6,10 @@ use Livewire\Component;
 
 use App\Models\Day;
 use App\Models\Week;
-use App\Models\Student;
+use App\Models\User;
 use App\Models\StudentsState;
-
+use Database\Factories\UserFactory;
+use Illuminate\Support\Facades\Auth;
 
 class FormStudentState extends Component
 {
@@ -18,6 +19,7 @@ class FormStudentState extends Component
     ];
 
     public $studentState = [
+        'name' => 'لم يعين',
         'user_id'       => '1',
         'hfrom'      => '',
         'hto'        => '',
@@ -26,39 +28,43 @@ class FormStudentState extends Component
         'mto'        => '',
         'mcount'        => 0,
         'starsCount' => [],
-        'list'       => [false,false,false],
+        'list'       => [false, false, false],
         'hasFire'    => false,
         'day_id'      => 1,
     ];
 
     public $days = [];
-    public $studentSlected = [
-        'refresh' => true,
-        'name' => null
-    ];
+    public $studentSlected_refresh = false;
+    public $studentSlected_name = null;
     public $newDayName;
     public $newWeekName;
     public $newStudentName;
     public $names;
-    public $selected =true;
+    public $selected = true;
 
+
+    public function mount()
+    {
+
+      
+    }
 
     public function render()
     {
 
+
         $this->days = Day::all()->sortByDesc('date');
         $this->getStudents();
         $this->setStudentSelected();
-        
 
 
-        
 
         return view('livewire.form-student-state');
     }
 
     public function createUser()
-    {   
+    {
+
         StudentsState::create([
             'user_id'       => $this->studentState['user_id'],
             'hfrom'       => $this->studentState['hfrom'],
@@ -72,9 +78,9 @@ class FormStudentState extends Component
             'hasFire'       => $this->studentState['hasFire'],
             'day_id'       => $this->studentState['day_id'],
         ]);
-            $this->emit('newstudentsState');
+        $this->emit('newstudentsState');
         //dd( $this->studentState);
-        
+
     }
     public function newDay()
     {
@@ -85,40 +91,60 @@ class FormStudentState extends Component
     public function newWeek()
     {
         Week::create(['name' => $this->newWeekName]);
-    
+
         $this->emit('newweek');
     }
 
     public function newStudent()
     {
-        Student::create(['name' => $this->newStudentName]);
-    
+
+        $factory = new UserFactory();
+        $teacher = Auth::user();
+        User::create($factory->definition($this->newStudentName, $teacher->class));
+
         $this->emit('newstudent');
     }
 
     public function getStudents()
     {
-        $this->names =  Student::select('name')->distinct()->get() ;
+        $teacher = Auth::user();
+        $this->names =  User::where('class_id', $teacher->class)->select('name')->distinct()->get()->toArray();
     }
 
     public function selectChang()
     {
-        $this->studentSlected['refresh'] =  true;
+        $this->studentSlected_refresh =  true;
     }
 
     public function setStudentSelected()
     {
-        if ($this->studentSlected['name'] && $this->studentSlected['refresh']) {
-            $getState =  StudentsState::orderBy('created_at','desc')->where('name',$this->studentSlected['name'])->first();
-            if ($getState) {
-              $this->studentState = $getState->toArray();
-            }else{
-                $this->studentState['name'] = $this->studentSlected['name'];
-            }
-            $this->studentSlected['refresh'] =false;
-        }
-       
-        
-    }
+        if ($this->studentSlected_name && $this->studentSlected_refresh) {
+           
+            $getUser =  User::where('name', $this->studentSlected_name)->first();
 
+
+            if ($getUser->studentsStates()->count()) {
+                $this->studentState = $getUser->studentsStates()->orderBy('created_at', 'desc')->first()->toArray();
+                $this->studentState['name'] = $getUser->name;
+                $this->studentState['user_id'] = $getUser->id;
+            } else {
+
+                $this->studentState = [
+                    'name' => $getUser->name,
+                    'user_id'       =>  $getUser->id,
+                    'hfrom'      => '',
+                    'hto'        => '',
+                    'hcount'        => 0,
+                    'mfrom'      => '',
+                    'mto'        => '',
+                    'mcount'        => 0,
+                    'starsCount' => [],
+                    'list'       => [false, false, false],
+                    'hasFire'    => false,
+                    'day_id'      => 1,
+                ];
+            }
+            $this->studentSlected_refresh = false;
+        }
+    }
 }

@@ -1,3 +1,4 @@
+
 window.addEventListener('load', () => {
 
     //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
@@ -25,6 +26,13 @@ window.addEventListener('load', () => {
     sticker_input = document.querySelector('#sticker_input');
 
     sticker.onclick = () => sticker_input.click();
+
+
+
+    e_sticker = document.querySelector('#e_sticker');
+    e_sticker_input = document.querySelector('#e_sticker_input');
+
+    e_sticker.onclick = () => e_sticker_input.click();
     //----------------------------------------------
     //three stars chang color on hover and set color on click it and choise radio input
     startings = [
@@ -54,9 +62,9 @@ window.addEventListener('load', () => {
 
     startings.forEach((e, i) => e.addEventListener('click', e => onMouseClickStar(i, this)))
 
-    e_startings.forEach((e, i) => e.addEventListener('mouseenter', e => onMouseEnterStar(i, this)))
+    e_startings.forEach((e, i) => e.addEventListener('mouseenter', e => e_onMouseEnterStar(i, this)))
 
-    e_startings.forEach((e, i) => e.addEventListener('click', e => onMouseClickStar(i, this)))
+    e_startings.forEach((e, i) => e.addEventListener('click', e => e_onMouseClickStar(i, this)))
 
 
     function onMouseEnterStar(snum, ele) {
@@ -68,13 +76,26 @@ window.addEventListener('load', () => {
         startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-700') : null)
     }
 
-    function onMouseEnterStar(snum, ele) {
+    function e_onMouseEnterStar(snum, ele) {
         e_startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500'))
     }
 
-    function onMouseClickStar(snum, ele) {
+    function e_onMouseClickStar(snum, ele) {
         e_radios[snum].click()
         e_startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-700') : null)
     }
     //----------------------------------------------
 })
+
+window.addEventListener('copyStates', e  =>{
+    //console.log(e.detail.states)
+    var text;
+    e.detail.states.forEach((item, i) =>{
+       // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
+        text += `${i + 1}. ${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n-------------\n`;
+    })
+    console.log(text.replace('undefined',''))
+    navigator.clipboard.writeText(text);
+})
+
+

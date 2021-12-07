@@ -11,7 +11,7 @@
                     @livewire('edit-weeks')
                 </div>
                 <div dir="rtl"
-                    class=" bg-white  w-5/6 max-w-3xl min-w-min rounded-xl duration-500 overflow-hidden my-2 ml-2 "
+                    class=" bg-white  w-full max-w-3xl min-w-min rounded-xl duration-500 overflow-hidden my-2 ml-2 "
                     drower-js>
                     @livewire('add-day-to-week')
                 </div>

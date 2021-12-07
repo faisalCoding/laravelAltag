@@ -34,6 +34,13 @@ window.addEventListener('load', function () {
 
   sticker.onclick = function () {
     return sticker_input.click();
+  };
+
+  e_sticker = document.querySelector('#e_sticker');
+  e_sticker_input = document.querySelector('#e_sticker_input');
+
+  e_sticker.onclick = function () {
+    return e_sticker_input.click();
   }; //----------------------------------------------
   //three stars chang color on hover and set color on click it and choise radio input
 
@@ -54,12 +61,12 @@ window.addEventListener('load', function () {
   });
   e_startings.forEach(function (e, i) {
     return e.addEventListener('mouseenter', function (e) {
-      return onMouseEnterStar(i, _this);
+      return e_onMouseEnterStar(i, _this);
     });
   });
   e_startings.forEach(function (e, i) {
     return e.addEventListener('click', function (e) {
-      return onMouseClickStar(i, _this);
+      return e_onMouseClickStar(i, _this);
     });
   });
 
@@ -76,19 +83,29 @@ window.addEventListener('load', function () {
     });
   }
 
-  function onMouseEnterStar(snum, ele) {
+  function e_onMouseEnterStar(snum, ele) {
     e_startings.forEach(function (e, i) {
       return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
     });
   }
 
-  function onMouseClickStar(snum, ele) {
+  function e_onMouseClickStar(snum, ele) {
     e_radios[snum].click();
     e_startings.forEach(function (e, i) {
       return i <= snum ? e.classList.add('text-indigo-700') : null;
     });
   } //----------------------------------------------
 
+});
+window.addEventListener('copyStates', function (e) {
+  //console.log(e.detail.states)
+  var text;
+  e.detail.states.forEach(function (item, i) {
+    // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
+    text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
+  });
+  console.log(text.replace('undefined', ''));
+  navigator.clipboard.writeText(text);
 });
 
 /***/ })
