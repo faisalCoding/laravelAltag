@@ -2,7 +2,7 @@
 window.addEventListener('load', () => {
 
     //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
-    list_container = document.querySelector('#list_container')
+    list_container = document.getElementById('list_container')
 
     list_container.querySelectorAll('.chk_js').forEach(element => {
 

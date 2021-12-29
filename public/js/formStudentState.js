@@ -32,7 +32,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 window.addEventListener('load', function () {
   //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
-  list_container = document.querySelector('#list_container');
+  list_container = document.getElementById('list_container');
   list_container.querySelectorAll('.chk_js').forEach(function (element) {
     var checkbox = element.querySelector('input[type="checkbox"]');
 
