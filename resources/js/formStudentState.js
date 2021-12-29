@@ -2,6 +2,13 @@
 window.addEventListener('load', () => {
 
     //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(3000);
+
     list_container = document.getElementById('list_container')
 
     list_container.querySelectorAll('.chk_js').forEach(element => {
