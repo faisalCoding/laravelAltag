@@ -1,5 +1,5 @@
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
 
     //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
 
