@@ -12,21 +12,25 @@
                             class=" px-10 bg-blue-400 rounded-lg text-white h-10">اضف</button>
                     </div>
                     <h1>اختر طالب للتسميع</h1>
-                    <div x-data="selectStudent($wire.names)" class=" relative"  @click.away="open = false">
-                        <input wire:model="studentSlected_name" @keyup.enter="$wire.selectChang()" type="text" x-model="inp_name" @input="open = true" class=" border-none rounded-md bg-gray-100"
-                           >
-                        <div class=" absolute bg-white shadow-md rounded-lg " x-show="open" x-transition:enter="transition ease-out duration-300"
+                    <div x-data="selectStudent($wire.names)" class=" relative" @click.away="open = false">
+                        <input wire:model="studentSlected_name" @keyup.enter="$wire.selectChang()" type="text"
+                            x-model="inp_name" @input="open = true" class=" border-none rounded-md bg-gray-100">
+                        <div class=" absolute bg-white shadow-md rounded-lg " x-show="open"
+                            x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 transform scale-90"
                             x-transition:enter-end="opacity-100 transform scale-100"
                             x-transition:leave="transition ease-in duration-300"
                             x-transition:leave-start="opacity-100 transform scale-100"
                             x-transition:leave-end="opacity-0 transform scale-90">
                             <template x-for="name in selectInp()">
-                                <div x-text="name.name" x-on:click="inp_name = name.name;$wire.studentSlected_name = name.name;$wire.selectChang();open = false" class=" select-none py-4 px-3 cursor-pointer hover:bg-gray-100 transition-all duration-200"></div>
+                                <div x-text="name.name"
+                                    x-on:click="inp_name = name.name;$wire.studentSlected_name = name.name;$wire.selectChang();open = false"
+                                    class=" select-none py-4 px-3 cursor-pointer hover:bg-gray-100 transition-all duration-200">
+                                </div>
                             </template>
                         </div>
                     </div>
-                
+
                 </div>
 
                 <div class="">
@@ -45,6 +49,11 @@
                 </div>
 
             </div>
+
+            @livewire('google-sheet')
+            
+
+
             <div class="p-2 w-1/1 bg-white mx-auto mt-8 rounded-xl duration-500 overflow-hidden">
 
                 <h1>معلومات تسميع الطالب</h1>

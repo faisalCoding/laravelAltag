@@ -16,6 +16,8 @@ class FormStudentState extends Component
     protected $listeners = [
         'daydeleted' => '$refresh',
         'studentedit' => '$refresh',
+        'set-google-data' => '$refresh',
+        'set-google-data' => ''
     ];
 
     public $studentState = [
@@ -147,4 +149,24 @@ class FormStudentState extends Component
             $this->studentSlected_refresh = false;
         }
     }
+
+    public function setGoogleData($arr){
+         
+        $this->studentState['hfrom'] = $arr[0];
+        $this->studentState['hto'] = $arr[1];
+        $this->studentState['mfrom'] = $arr[2];
+        $this->studentState['mto'] = $arr[3];
+    }
+
+
+ 
+      
+    
+    protected function getListeners()
+    {
+        return [
+            'set-google-data' => 'setGoogleData',
+        ];
+    }
+
 }
