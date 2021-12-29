@@ -143,7 +143,7 @@
 
                     <div class="--bg-blue-100 grid grid-row-3 gap-1 row-span-2">
 
-                        <script src="{{ asset('/js/formStudentState.js') }}"></script>
+                        
                         <div>امتيازات</div>
                         <div id="list_container" class="row-span-2 grid grid-row-3 gap-2 select-none">
                             <div class="grid grid-cols-1 grap-2 w-1/1 chk_js">
@@ -214,7 +214,7 @@
 
     </header>
 
-
+    <script src="{{ asset('/js/formStudentState.js') }}"></script>
     <script>
         function selectStudent(names){
     return{
