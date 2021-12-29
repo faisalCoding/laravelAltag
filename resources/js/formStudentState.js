@@ -1,15 +1,9 @@
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
 
     //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-
-      await sleep(3000);
-
-    list_container = document.getElementById('list_container')
+   var list_container = document.getElementById('list_container')
 
     list_container.querySelectorAll('.chk_js').forEach(element => {
 
@@ -18,7 +12,7 @@ window.addEventListener('load', async () => {
         element.onclick = () => checkbox.click();
 
     });
-    e_list_container = document.querySelector('#e_list_container')
+   var e_list_container = document.querySelector('#e_list_container')
 
     e_list_container.querySelectorAll('.chk_js').forEach(element => {
 
@@ -29,37 +23,37 @@ window.addEventListener('load', async () => {
     });
     //----------------------------------------------
     // one blue star sticker  click checkbox
-    sticker = document.querySelector('#sticker');
-    sticker_input = document.querySelector('#sticker_input');
+    var  sticker = document.querySelector('#sticker');
+    var  sticker_input = document.querySelector('#sticker_input');
 
     sticker.onclick = () => sticker_input.click();
 
 
 
-    e_sticker = document.querySelector('#e_sticker');
-    e_sticker_input = document.querySelector('#e_sticker_input');
+    var  e_sticker = document.querySelector('#e_sticker');
+    var  e_sticker_input = document.querySelector('#e_sticker_input');
 
     e_sticker.onclick = () => e_sticker_input.click();
     //----------------------------------------------
     //three stars chang color on hover and set color on click it and choise radio input
-    startings = [
+    var  startings = [
         document.querySelector('#staring-1'),
         document.querySelector('#staring-2'),
         document.querySelector('#staring-3')
     ];
 
-    e_startings = [
+    var  e_startings = [
         document.querySelector('#e-staring-1'),
         document.querySelector('#e-staring-2'),
         document.querySelector('#e-staring-3')
     ];
 
-    radios = [
+    var  radios = [
         document.querySelector('#star-1'),
         document.querySelector('#star-2'),
         document.querySelector('#star-3')
     ]
-    e_radios = [
+    var  e_radios = [
         document.querySelector('#e-star-1'),
         document.querySelector('#e-star-2'),
         document.querySelector('#e-star-3')
@@ -92,7 +86,7 @@ window.addEventListener('load', async () => {
         e_startings.forEach((e, i) => i <= snum ? e.classList.add('text-indigo-700') : null)
     }
     //----------------------------------------------
-})
+
 
 window.addEventListener('copyStates', e => {
     //console.log(e.detail.states)
@@ -134,7 +128,7 @@ async function echo() {
     data_from_google = await fetchData('https://script.googleusercontent.com/macros/echo?user_content_key=JURUGREQ8P4KArcQBRvjxV6ZyEDE2WeX6lgnLnim-hCfKq2--IC72-g-sHcK1uy_pjOaNo9UiHMvACZs3uKgK5Tx_5prLLgZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGKfZW-G7rgyuXwGoJzrx86E9K_VPdo70o8AJDK0uPqtH4Sh8ytagaqCUFhtwsJnNv_rkvVNNl5OZXSbe7EO_82EJlLCjoMiGdz9Jw9Md8uu&lib=MLL5eXg7nKsLYqIClj--q_3T8ajkO9VEN').then(d => d)
     console.log(data_from_google)
 
-    data_from_google.user.forEach(ob =>{
+    data_from_google.user.forEach(ob => {
         console.log(Object.entries(ob))
 
         let name = Object.entries(ob)[0][0]
@@ -144,22 +138,24 @@ async function echo() {
 
 }
 
-students_google.addEventListener('change',(e)=>{
-let ob_select = {}
- let select = e.target.value;
- ob_select = data_from_google.user.filter(obj => {
-    return Object.entries(obj)[0][0] === select
-  })
-  let today_task = ob_select[0][select].filter(ob =>{
-     return !ob['الانجاز']
-  })[0]
+students_google.addEventListener('change', (e) => {
+    let ob_select = {}
+    let select = e.target.value;
+    ob_select = data_from_google.user.filter(obj => {
+        return Object.entries(obj)[0][0] === select
+    })
+    let today_task = ob_select[0][select].filter(ob => {
+        return !ob['الانجاز']
+    })[0]
 
-  h_from.innerText = today_task["الحفظ من"]
-  h_to.innerText = today_task["الحفظ الى"]
-  m_from.innerText = today_task["المراجعة من"]
-  m_to.innerText = today_task["المراجعة الى"]
+    h_from.innerText = today_task["الحفظ من"]
+    h_to.innerText = today_task["الحفظ الى"]
+    m_from.innerText = today_task["المراجعة من"]
+    m_to.innerText = today_task["المراجعة الى"]
 
-  set_google_data_button.setAttribute('x-data',`{data:['${today_task['الحفظ من']}','${today_task['الحفظ الى']}','${today_task['المراجعة من']}','${today_task['المراجعة الى']}']}`)
-
+    set_google_data_button.setAttribute('x-data', `{data:['${today_task['الحفظ من']}','${today_task['الحفظ الى']}','${today_task['المراجعة من']}','${today_task['المراجعة الى']}']}`)
+    
 })
-    echo()
+echo()
+})
+

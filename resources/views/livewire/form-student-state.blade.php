@@ -192,7 +192,7 @@
                                 <input id="list-3" type="checkbox" style="display:none" class=""
                                     wire:model="studentState.list.2">
                             </div>
-                            <script src="{{ asset('/js/formStudentState.js') }}"></script>
+                            
                         </div>
                     </div>
 
@@ -215,7 +215,7 @@
 
     </header>
 
-    
+    <script src="{{ mix('/js/formStudentState.js') }}"></script>
     <script>
         function selectStudent(names){
     return{

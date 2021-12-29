@@ -30,216 +30,197 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-window.addEventListener('load', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-  var sleep, onMouseEnterStar, onMouseClickStar, e_onMouseEnterStar, e_onMouseClickStar;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          e_onMouseClickStar = function _e_onMouseClickStar(snum, ele) {
-            e_radios[snum].click();
-            e_startings.forEach(function (e, i) {
-              return i <= snum ? e.classList.add('text-indigo-700') : null;
-            });
-          };
+window.addEventListener('load', function () {
+  //list =>[1= اولشخص يسمع 2= تسميع بدون اخطاء 3= تكرار الحفظ]     click checkbox 
+  var list_container = document.getElementById('list_container');
+  list_container.querySelectorAll('.chk_js').forEach(function (element) {
+    var checkbox = element.querySelector('input[type="checkbox"]');
 
-          e_onMouseEnterStar = function _e_onMouseEnterStar(snum, ele) {
-            e_startings.forEach(function (e, i) {
-              return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
-            });
-          };
-
-          onMouseClickStar = function _onMouseClickStar(snum, ele) {
-            radios[snum].click();
-            startings.forEach(function (e, i) {
-              return i <= snum ? e.classList.add('text-indigo-700') : null;
-            });
-          };
-
-          onMouseEnterStar = function _onMouseEnterStar(snum, ele) {
-            startings.forEach(function (e, i) {
-              return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
-            });
-          };
-
-          sleep = function _sleep(ms) {
-            return new Promise(function (resolve) {
-              return setTimeout(resolve, ms);
-            });
-          };
-
-          _context.next = 7;
-          return sleep(3000);
-
-        case 7:
-          list_container = document.getElementById('list_container');
-          list_container.querySelectorAll('.chk_js').forEach(function (element) {
-            var checkbox = element.querySelector('input[type="checkbox"]');
-
-            element.onclick = function () {
-              return checkbox.click();
-            };
-          });
-          e_list_container = document.querySelector('#e_list_container');
-          e_list_container.querySelectorAll('.chk_js').forEach(function (element) {
-            var checkbox = element.querySelector('input[type="checkbox"]');
-
-            element.onclick = function () {
-              return checkbox.click();
-            };
-          }); //----------------------------------------------
-          // one blue star sticker  click checkbox
-
-          sticker = document.querySelector('#sticker');
-          sticker_input = document.querySelector('#sticker_input');
-
-          sticker.onclick = function () {
-            return sticker_input.click();
-          };
-
-          e_sticker = document.querySelector('#e_sticker');
-          e_sticker_input = document.querySelector('#e_sticker_input');
-
-          e_sticker.onclick = function () {
-            return e_sticker_input.click();
-          }; //----------------------------------------------
-          //three stars chang color on hover and set color on click it and choise radio input
-
-
-          startings = [document.querySelector('#staring-1'), document.querySelector('#staring-2'), document.querySelector('#staring-3')];
-          e_startings = [document.querySelector('#e-staring-1'), document.querySelector('#e-staring-2'), document.querySelector('#e-staring-3')];
-          radios = [document.querySelector('#star-1'), document.querySelector('#star-2'), document.querySelector('#star-3')];
-          e_radios = [document.querySelector('#e-star-1'), document.querySelector('#e-star-2'), document.querySelector('#e-star-3')];
-          startings.forEach(function (e, i) {
-            return e.addEventListener('mouseenter', function (e) {
-              return onMouseEnterStar(i, _this);
-            });
-          });
-          startings.forEach(function (e, i) {
-            return e.addEventListener('click', function (e) {
-              return onMouseClickStar(i, _this);
-            });
-          });
-          e_startings.forEach(function (e, i) {
-            return e.addEventListener('mouseenter', function (e) {
-              return e_onMouseEnterStar(i, _this);
-            });
-          });
-          e_startings.forEach(function (e, i) {
-            return e.addEventListener('click', function (e) {
-              return e_onMouseClickStar(i, _this);
-            });
-          }); //----------------------------------------------
-
-        case 25:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, _callee);
-})));
-window.addEventListener('copyStates', function (e) {
-  //console.log(e.detail.states)
-  var text;
-  e.detail.states.forEach(function (item, i) {
-    // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-    text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
+    element.onclick = function () {
+      return checkbox.click();
+    };
   });
-  console.log(text.replace('undefined', ''));
-  navigator.clipboard.writeText(text);
-}); //------------------=============================----------------------+
-//                  DATA FETCH FROM GOOGLE SHEETS                      |
-//------------------=============================----------------------+
+  var e_list_container = document.querySelector('#e_list_container');
+  e_list_container.querySelectorAll('.chk_js').forEach(function (element) {
+    var checkbox = element.querySelector('input[type="checkbox"]');
 
-var data_from_google = [];
-var students_google = document.getElementById('students_google');
-var h_from = document.getElementById('h_from');
-var h_to = document.getElementById('h_to');
-var m_from = document.getElementById('m_from');
-var m_to = document.getElementById('m_to');
-var set_google_data_button = document.getElementById('set_google_data_button');
+    element.onclick = function () {
+      return checkbox.click();
+    };
+  }); //----------------------------------------------
+  // one blue star sticker  click checkbox
 
-function fetchData(_x) {
-  return _fetchData.apply(this, arguments);
-}
+  var sticker = document.querySelector('#sticker');
+  var sticker_input = document.querySelector('#sticker_input');
 
-function _fetchData() {
-  _fetchData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(url) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return fetch(url);
+  sticker.onclick = function () {
+    return sticker_input.click();
+  };
 
-          case 2:
-            _context2.next = 4;
-            return _context2.sent.json();
+  var e_sticker = document.querySelector('#e_sticker');
+  var e_sticker_input = document.querySelector('#e_sticker_input');
 
-          case 4:
-            return _context2.abrupt("return", _context2.sent);
+  e_sticker.onclick = function () {
+    return e_sticker_input.click();
+  }; //----------------------------------------------
+  //three stars chang color on hover and set color on click it and choise radio input
 
-          case 5:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _fetchData.apply(this, arguments);
-}
 
-function echo() {
-  return _echo.apply(this, arguments);
-}
-
-function _echo() {
-  _echo = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            console.log('echo fun');
-            _context3.next = 3;
-            return fetchData('https://script.googleusercontent.com/macros/echo?user_content_key=JURUGREQ8P4KArcQBRvjxV6ZyEDE2WeX6lgnLnim-hCfKq2--IC72-g-sHcK1uy_pjOaNo9UiHMvACZs3uKgK5Tx_5prLLgZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGKfZW-G7rgyuXwGoJzrx86E9K_VPdo70o8AJDK0uPqtH4Sh8ytagaqCUFhtwsJnNv_rkvVNNl5OZXSbe7EO_82EJlLCjoMiGdz9Jw9Md8uu&lib=MLL5eXg7nKsLYqIClj--q_3T8ajkO9VEN').then(function (d) {
-              return d;
-            });
-
-          case 3:
-            data_from_google = _context3.sent;
-            console.log(data_from_google);
-            data_from_google.user.forEach(function (ob) {
-              console.log(Object.entries(ob));
-              var name = Object.entries(ob)[0][0];
-              students_google.innerHTML += "<option>".concat(name, "</option>");
-            });
-
-          case 6:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _echo.apply(this, arguments);
-}
-
-students_google.addEventListener('change', function (e) {
-  var ob_select = {};
-  var select = e.target.value;
-  ob_select = data_from_google.user.filter(function (obj) {
-    return Object.entries(obj)[0][0] === select;
+  var startings = [document.querySelector('#staring-1'), document.querySelector('#staring-2'), document.querySelector('#staring-3')];
+  var e_startings = [document.querySelector('#e-staring-1'), document.querySelector('#e-staring-2'), document.querySelector('#e-staring-3')];
+  var radios = [document.querySelector('#star-1'), document.querySelector('#star-2'), document.querySelector('#star-3')];
+  var e_radios = [document.querySelector('#e-star-1'), document.querySelector('#e-star-2'), document.querySelector('#e-star-3')];
+  startings.forEach(function (e, i) {
+    return e.addEventListener('mouseenter', function (e) {
+      return onMouseEnterStar(i, _this);
+    });
   });
-  var today_task = ob_select[0][select].filter(function (ob) {
-    return !ob['الانجاز'];
-  })[0];
-  h_from.innerText = today_task["الحفظ من"];
-  h_to.innerText = today_task["الحفظ الى"];
-  m_from.innerText = today_task["المراجعة من"];
-  m_to.innerText = today_task["المراجعة الى"];
-  set_google_data_button.setAttribute('x-data', "{data:['".concat(today_task['الحفظ من'], "','").concat(today_task['الحفظ الى'], "','").concat(today_task['المراجعة من'], "','").concat(today_task['المراجعة الى'], "']}"));
+  startings.forEach(function (e, i) {
+    return e.addEventListener('click', function (e) {
+      return onMouseClickStar(i, _this);
+    });
+  });
+  e_startings.forEach(function (e, i) {
+    return e.addEventListener('mouseenter', function (e) {
+      return e_onMouseEnterStar(i, _this);
+    });
+  });
+  e_startings.forEach(function (e, i) {
+    return e.addEventListener('click', function (e) {
+      return e_onMouseClickStar(i, _this);
+    });
+  });
+
+  function onMouseEnterStar(snum, ele) {
+    startings.forEach(function (e, i) {
+      return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
+    });
+  }
+
+  function onMouseClickStar(snum, ele) {
+    radios[snum].click();
+    startings.forEach(function (e, i) {
+      return i <= snum ? e.classList.add('text-indigo-700') : null;
+    });
+  }
+
+  function e_onMouseEnterStar(snum, ele) {
+    e_startings.forEach(function (e, i) {
+      return i <= snum ? e.classList.add('text-indigo-500') : e.classList.remove('text-indigo-500');
+    });
+  }
+
+  function e_onMouseClickStar(snum, ele) {
+    e_radios[snum].click();
+    e_startings.forEach(function (e, i) {
+      return i <= snum ? e.classList.add('text-indigo-700') : null;
+    });
+  } //----------------------------------------------
+
+
+  window.addEventListener('copyStates', function (e) {
+    //console.log(e.detail.states)
+    var text;
+    e.detail.states.forEach(function (item, i) {
+      // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
+      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
+    });
+    console.log(text.replace('undefined', ''));
+    navigator.clipboard.writeText(text);
+  }); //------------------=============================----------------------+
+  //                  DATA FETCH FROM GOOGLE SHEETS                      |
+  //------------------=============================----------------------+
+
+  var data_from_google = [];
+  var students_google = document.getElementById('students_google');
+  var h_from = document.getElementById('h_from');
+  var h_to = document.getElementById('h_to');
+  var m_from = document.getElementById('m_from');
+  var m_to = document.getElementById('m_to');
+  var set_google_data_button = document.getElementById('set_google_data_button');
+
+  function fetchData(_x) {
+    return _fetchData.apply(this, arguments);
+  }
+
+  function _fetchData() {
+    _fetchData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(url) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return fetch(url);
+
+            case 2:
+              _context.next = 4;
+              return _context.sent.json();
+
+            case 4:
+              return _context.abrupt("return", _context.sent);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _fetchData.apply(this, arguments);
+  }
+
+  function echo() {
+    return _echo.apply(this, arguments);
+  }
+
+  function _echo() {
+    _echo = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('echo fun');
+              _context2.next = 3;
+              return fetchData('https://script.googleusercontent.com/macros/echo?user_content_key=JURUGREQ8P4KArcQBRvjxV6ZyEDE2WeX6lgnLnim-hCfKq2--IC72-g-sHcK1uy_pjOaNo9UiHMvACZs3uKgK5Tx_5prLLgZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGKfZW-G7rgyuXwGoJzrx86E9K_VPdo70o8AJDK0uPqtH4Sh8ytagaqCUFhtwsJnNv_rkvVNNl5OZXSbe7EO_82EJlLCjoMiGdz9Jw9Md8uu&lib=MLL5eXg7nKsLYqIClj--q_3T8ajkO9VEN').then(function (d) {
+                return d;
+              });
+
+            case 3:
+              data_from_google = _context2.sent;
+              console.log(data_from_google);
+              data_from_google.user.forEach(function (ob) {
+                console.log(Object.entries(ob));
+                var name = Object.entries(ob)[0][0];
+                students_google.innerHTML += "<option>".concat(name, "</option>");
+              });
+
+            case 6:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _echo.apply(this, arguments);
+  }
+
+  students_google.addEventListener('change', function (e) {
+    var ob_select = {};
+    var select = e.target.value;
+    ob_select = data_from_google.user.filter(function (obj) {
+      return Object.entries(obj)[0][0] === select;
+    });
+    var today_task = ob_select[0][select].filter(function (ob) {
+      return !ob['الانجاز'];
+    })[0];
+    h_from.innerText = today_task["الحفظ من"];
+    h_to.innerText = today_task["الحفظ الى"];
+    m_from.innerText = today_task["المراجعة من"];
+    m_to.innerText = today_task["المراجعة الى"];
+    set_google_data_button.setAttribute('x-data', "{data:['".concat(today_task['الحفظ من'], "','").concat(today_task['الحفظ الى'], "','").concat(today_task['المراجعة من'], "','").concat(today_task['المراجعة الى'], "']}"));
+  });
+  echo();
 });
-echo();
 
 /***/ }),
 
