@@ -16,7 +16,7 @@ class FormStudentState extends Component
     protected $listeners = [
         'daydeleted' => '$refresh',
         'studentedit' => '$refresh',
-        'set-google-data' => '$refresh',
+       
         'set-google-data' => ''
     ];
 
@@ -156,6 +156,8 @@ class FormStudentState extends Component
         $this->studentState['hto'] = $arr[1];
         $this->studentState['mfrom'] = $arr[2];
         $this->studentState['mto'] = $arr[3];
+
+        $this->dispatchBrowserEvent('google-seting-data', ['name' => $arr[4]]);
     }
 
 

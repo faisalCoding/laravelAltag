@@ -103,59 +103,9 @@ window.addEventListener('copyStates', e => {
     navigator.clipboard.writeText(text);
 })
 
-//------------------=============================----------------------+
-//                  DATA FETCH FROM GOOGLE SHEETS                      |
-//------------------=============================----------------------+
 
 
-var data_from_google = []
-var students_google = document.getElementById('students_google')
-
-var h_from = document.getElementById('h_from')
-var h_to = document.getElementById('h_to')
-var m_from = document.getElementById('m_from')
-var m_to = document.getElementById('m_to')
-var set_google_data_button = document.getElementById('set_google_data_button')
 
 
-async function fetchData(url) {
-    return await (await fetch(url)).json()
-}
-
-
-async function echo() {
-    console.log('echo fun')
-    data_from_google = await fetchData('https://script.googleusercontent.com/macros/echo?user_content_key=JURUGREQ8P4KArcQBRvjxV6ZyEDE2WeX6lgnLnim-hCfKq2--IC72-g-sHcK1uy_pjOaNo9UiHMvACZs3uKgK5Tx_5prLLgZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGKfZW-G7rgyuXwGoJzrx86E9K_VPdo70o8AJDK0uPqtH4Sh8ytagaqCUFhtwsJnNv_rkvVNNl5OZXSbe7EO_82EJlLCjoMiGdz9Jw9Md8uu&lib=MLL5eXg7nKsLYqIClj--q_3T8ajkO9VEN').then(d => d)
-    console.log(data_from_google)
-
-    data_from_google.user.forEach(ob => {
-        console.log(Object.entries(ob))
-
-        let name = Object.entries(ob)[0][0]
-
-        students_google.innerHTML += `<option>${name}</option>`
-    })
-
-}
-
-students_google.addEventListener('change', (e) => {
-    let ob_select = {}
-    let select = e.target.value;
-    ob_select = data_from_google.user.filter(obj => {
-        return Object.entries(obj)[0][0] === select
-    })
-    let today_task = ob_select[0][select].filter(ob => {
-        return !ob['الانجاز']
-    })[0]
-
-    h_from.innerText = today_task["الحفظ من"]
-    h_to.innerText = today_task["الحفظ الى"]
-    m_from.innerText = today_task["المراجعة من"]
-    m_to.innerText = today_task["المراجعة الى"]
-
-    set_google_data_button.setAttribute('x-data', `{data:['${today_task['الحفظ من']}','${today_task['الحفظ الى']}','${today_task['المراجعة من']}','${today_task['المراجعة الى']}']}`)
-    
-})
-echo()
 })
 

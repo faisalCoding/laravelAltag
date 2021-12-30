@@ -15,7 +15,7 @@
                     <div x-data="selectStudent($wire.names)" class=" relative" @click.away="open = false">
                         <input wire:model="studentSlected_name" @keyup.enter="$wire.selectChang()" type="text"
                             x-model="inp_name" @input="open = true" class=" border-none rounded-md bg-gray-100">
-                        <div class=" absolute bg-white shadow-md rounded-lg " x-show="open"
+                        <div class=" absolute bg-white shadow-md rounded-lg z-50" x-show="open"
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 transform scale-90"
                             x-transition:enter-end="opacity-100 transform scale-100"
