@@ -97,12 +97,29 @@ window.addEventListener('copyStates', e => {
     e.detail.states.forEach((item, i) => {
 
         // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-        text += `${i + 1}. ${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n-------------\n`;
+        text += `${i + 1}. ${item.name} \n ${item.hfrom} ${item.hto} عدد الصفحات (${item.hcount})\n ${item.mfrom} ${item.mto}عدد الصفحات (${item.hcount})\n-------------\n`;
 
     })
 
-    console.log(text.replace('undefined', ''))
-    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', ''));
+
+    
+    let hsum = 0;
+
+    for (let i = 0; i < e.detail.states.length; i++) {
+        hsum += e.detail.states[i].hcount;
+    }
+    console.log(hsum);
+
+    let msum = 0;
+
+    for (let i = 0; i < e.detail.states.length; i++) {
+        msum += e.detail.states[i].mcount;
+    }
+    console.log(msum);
+
+
+
+    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', '') + hsum+ "  " +  msum);
 })
 
 

@@ -104,10 +104,23 @@ window.addEventListener('load', function () {
     console.log(e.detail.day);
     e.detail.states.forEach(function (item, i) {
       // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
+      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, " \u0639\u062F\u062F \u0627\u0644\u0635\u0641\u062D\u0627\u062A (").concat(item.hcount, ")\n ").concat(item.mfrom, " ").concat(item.mto, "\u0639\u062F\u062F \u0627\u0644\u0635\u0641\u062D\u0627\u062A (").concat(item.hcount, ")\n-------------\n");
     });
-    console.log(text.replace('undefined', ''));
-    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', ''));
+    var hsum = 0;
+
+    for (var i = 0; i < e.detail.states.length; i++) {
+      hsum += e.detail.states[i].hcount;
+    }
+
+    console.log(hsum);
+    var msum = 0;
+
+    for (var _i = 0; _i < e.detail.states.length; _i++) {
+      msum += e.detail.states[_i].mcount;
+    }
+
+    console.log(msum);
+    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', '') + hsum + "  " + msum);
   });
 });
 
