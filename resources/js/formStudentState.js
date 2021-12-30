@@ -91,6 +91,8 @@ window.addEventListener('load', () => {
 window.addEventListener('copyStates', e => {
     //console.log(e.detail.states)
     var text;
+    console.log(e.detail.states)
+    console.log(e.detail.day)
 
     e.detail.states.forEach((item, i) => {
 
@@ -100,7 +102,7 @@ window.addEventListener('copyStates', e => {
     })
 
     console.log(text.replace('undefined', ''))
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(`\n ${e.detail.day.date}` + text.replace('undefined', ''));
 })
 
 

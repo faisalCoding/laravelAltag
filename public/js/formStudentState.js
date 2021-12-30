@@ -100,12 +100,14 @@ window.addEventListener('load', function () {
   window.addEventListener('copyStates', function (e) {
     //console.log(e.detail.states)
     var text;
+    console.log(e.detail.states);
+    console.log(e.detail.day);
     e.detail.states.forEach(function (item, i) {
       // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
       text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
     });
     console.log(text.replace('undefined', ''));
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText("\n ".concat(e.detail.day.date) + text.replace('undefined', ''));
   });
 });
 

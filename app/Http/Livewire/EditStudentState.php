@@ -158,7 +158,7 @@ class EditStudentState extends Component
     public function copyStates(){
 
         try {
-            $this->dispatchBrowserEvent('copyStates', ['states'=>  $this->studentStates]);
+            $this->dispatchBrowserEvent('copyStates', ['states'=>  $this->studentStates, 'day'=> Day::find($this->filter['day_id'])]);
           
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent('copyStates_faild', ['throw'=>  $th]);
