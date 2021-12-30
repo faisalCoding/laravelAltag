@@ -107,7 +107,7 @@ window.addEventListener('load', function () {
       text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "\n ").concat(item.mfrom, " ").concat(item.mto, "\n-------------\n");
     });
     console.log(text.replace('undefined', ''));
-    navigator.clipboard.writeText("\n ".concat(e.detail.day.date) + text.replace('undefined', ''));
+    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', ''));
   });
 });
 

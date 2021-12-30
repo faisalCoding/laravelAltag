@@ -102,7 +102,7 @@ window.addEventListener('copyStates', e => {
     })
 
     console.log(text.replace('undefined', ''))
-    navigator.clipboard.writeText(`\n ${e.detail.day.date}` + text.replace('undefined', ''));
+    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', ''));
 })
 
 
