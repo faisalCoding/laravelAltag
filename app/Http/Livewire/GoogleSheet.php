@@ -15,6 +15,7 @@ class GoogleSheet extends Component
     public function setGoogleData($arr)
     {
         $this->emit('set-google-data',$arr);
+        
     }
 
 }
