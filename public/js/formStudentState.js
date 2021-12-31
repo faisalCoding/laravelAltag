@@ -104,7 +104,7 @@ window.addEventListener('load', function () {
     console.log(e.detail.day);
     e.detail.states.forEach(function (item, i) {
       // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "  (").concat(item.hcount, ")\n ").concat(item.mfrom, " ").concat(item.mto, " (").concat(item.hcount, ")\n-------------\n");
+      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "  (").concat(item.hcount, ")\n ").concat(item.mfrom, " ").concat(item.mto, " (").concat(item.mcount, ")\n-------------\n");
     });
     var hsum = 0;
 
