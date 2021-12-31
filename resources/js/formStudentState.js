@@ -119,7 +119,7 @@ window.addEventListener('copyStates', e => {
 
 
 
-    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', '') + ` مجموع صفحات الحفظ ${hsum}\n مجموع صفحات المراجعة ${sum}` );
+    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', '') + ` مجموع صفحات الحفظ ${hsum}\n مجموع صفحات المراجعة ${msum}` );
 })
 
 

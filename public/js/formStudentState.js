@@ -120,7 +120,7 @@ window.addEventListener('load', function () {
     }
 
     console.log(msum);
-    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', '') + " \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u062D\u0641\u0638 ".concat(hsum, "\n \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 ").concat(sum));
+    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', '') + " \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u062D\u0641\u0638 ".concat(hsum, "\n \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 ").concat(msum));
   });
 });
 
