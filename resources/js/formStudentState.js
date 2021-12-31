@@ -97,7 +97,7 @@ window.addEventListener('copyStates', e => {
     e.detail.states.forEach((item, i) => {
 
         // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-        text += `${i + 1}. ${item.name} \n ${item.hfrom} ${item.hto} عدد الصفحات (${item.hcount})\n ${item.mfrom} ${item.mto}عدد الصفحات (${item.hcount})\n-------------\n`;
+        text += `${i + 1}. ${item.name} \n ${item.hfrom} ${item.hto}  (${item.hcount})\n ${item.mfrom} ${item.mto} (${item.hcount})\n-------------\n`;
 
     })
 
@@ -119,7 +119,7 @@ window.addEventListener('copyStates', e => {
 
 
 
-    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', '') + hsum+ "  " +  msum);
+    navigator.clipboard.writeText(` ${e.detail.day.date}\n\n` + text.replace('undefined', '') + ` مجموع صفحات الحفظ ${hsum}\n مجموع صفحات المراجعة ${sum}` );
 })
 
 

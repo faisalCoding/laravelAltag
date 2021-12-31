@@ -104,7 +104,7 @@ window.addEventListener('load', function () {
     console.log(e.detail.day);
     e.detail.states.forEach(function (item, i) {
       // console.log(`${item.name} \n ${item.hfrom} ${item.hto}\n ${item.mfrom} ${item.mto}\n\n`)
-      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, " \u0639\u062F\u062F \u0627\u0644\u0635\u0641\u062D\u0627\u062A (").concat(item.hcount, ")\n ").concat(item.mfrom, " ").concat(item.mto, "\u0639\u062F\u062F \u0627\u0644\u0635\u0641\u062D\u0627\u062A (").concat(item.hcount, ")\n-------------\n");
+      text += "".concat(i + 1, ". ").concat(item.name, " \n ").concat(item.hfrom, " ").concat(item.hto, "  (").concat(item.hcount, ")\n ").concat(item.mfrom, " ").concat(item.mto, " (").concat(item.hcount, ")\n-------------\n");
     });
     var hsum = 0;
 
@@ -120,7 +120,7 @@ window.addEventListener('load', function () {
     }
 
     console.log(msum);
-    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', '') + hsum + "  " + msum);
+    navigator.clipboard.writeText(" ".concat(e.detail.day.date, "\n\n") + text.replace('undefined', '') + " \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u062D\u0641\u0638 ".concat(hsum, "\n \u0645\u062C\u0645\u0648\u0639 \u0635\u0641\u062D\u0627\u062A \u0627\u0644\u0645\u0631\u0627\u062C\u0639\u0629 ").concat(sum));
   });
 });
 
