@@ -5,7 +5,7 @@
             <x-jet-authentication-card-logo />
         </x-slot>
         <div class=" w-full flex justify-between items-center px-5 select-none relative">
-            <form action="{{ route('teacher.check') }}" method="post" class="w-full ">
+            <form action="{{ route('teacher.check') }}" method="post" class="w-full mb-5">
                     @csrf
                     <div>
                          <x-jet-label for="email" value="{{ __('Email') }}" />
